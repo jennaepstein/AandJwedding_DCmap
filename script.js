@@ -46,7 +46,7 @@ map.addControl(new mapboxgl.NavigationControl());
                 'visibility': 'visible'
             },
             'paint': {
-                'circle-radius': 6,
+                'circle-radius': 8,
                 'circle-color': '#843c47'
             }
         });
@@ -64,7 +64,7 @@ map.addControl(new mapboxgl.NavigationControl());
                 'visibility': 'visible'
             },
             'paint': {
-                'circle-radius': 6,
+                'circle-radius': 8,
                 'circle-color': '#DC872C'
             }
         });
