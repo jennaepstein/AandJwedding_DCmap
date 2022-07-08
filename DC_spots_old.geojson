@@ -17,5 +17,7 @@
   {"type":"Feature","properties":{"title":"National Portrait Gallery","category":"Museum","address":"8th and G Streets\nWashington, DC 20001","description":""},"geometry":{"type":"Point","coordinates":[-77.025213,38.8978267]}},
   {"type":"Feature","properties":{"title":"The Renwick Gallery","category":"Museum","address":"1661 Pennsylvania Avenue NW\nWashington, DC 20006","description":""},"geometry":{"type":"Point","coordinates":[-77.04127,38.8991117]}},
   {"type":"Feature","properties":{"title":"National Gallery of Art - Scuplture Garden","category":"Museum","address":"Constitution Ave NW &, 7th St NW\nWashington, DC 20408","description":""},"geometry":{"type":"Point","coordinates":[-77.0251475,38.8912958]}},
-  {"type":"Feature","properties":{"title":"National Museum of African American History & Culture","category":"Museum","address":"1400 Constitution Ave. NW\nWashington, DC 20560","description":""},"geometry":{"type":"Point","coordinates":[-77.034808,38.8910644]}}
+  {"type":"Feature","properties":{"title":"National Museum of African American History & Culture","category":"Museum","address":"1400 Constitution Ave. NW\nWashington, DC 20560","description":""},"geometry":{"type":"Point","coordinates":[-77.034808,38.8910644]}},
+  {"type":"Feature","properties":{"Title":"Meridian Hill Park","Category":"Park","Address":"16th St NW & W St NW Washington, DC 20009","Website":"","Description/Notes":""},"geometry":{"type":"Point","coordinates":[-77.03574991,38.91975488]}}
+
   ]}

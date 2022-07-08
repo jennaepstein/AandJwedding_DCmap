@@ -88,7 +88,7 @@ const getIsos = function() {
           'filter': ['==', 'category', 'Food/Drink'],
           'source': {
             type: 'geojson',
-            data: 'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/DC_POI.geojson'
+            data: 'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/DC_spots_old.geojson'
           },
           'layout': {
           // Make the layer visible by default.
@@ -106,7 +106,7 @@ const getIsos = function() {
           'filter': ['==', 'category', 'Museum'],
           'source': {
             type: 'geojson',
-            data: 'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/DC_POI.geojson'
+            data: 'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/DC_spots_old.geojson'
           },
           'layout': {
           // Make the layer visible by default.
@@ -125,7 +125,7 @@ const getIsos = function() {
         'filter': ['==', 'category', 'Wedding-related'],
         'source': {
           type: 'geojson',
-          data: 'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/DC_POI.geojson'
+          data: 'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/DC_spots_old.geojson'
         },
         'layout': {
         // Make the layer visible by default.
@@ -144,7 +144,7 @@ const getIsos = function() {
       'filter': ['==', 'category', 'Park'],
       'source': {
         type: 'geojson',
-        data: 'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/DC_POI.geojson'
+        data: 'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/DC_spots_old.geojson'
       },
       'layout': {
       // Make the layer visible by default.
@@ -164,7 +164,7 @@ const getIsos = function() {
       'filter': ['==', 'category', 'Transit'],
       'source': {
         type: 'geojson',
-        data: 'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/DC_POI.geojson'
+        data: 'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/DC_spots_old.geojson'
       },
       'layout': {
       // Make the layer visible by default.
