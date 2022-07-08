@@ -152,7 +152,7 @@ const getIsos = function() {
       },
       'paint': {
         'circle-radius': 8,
-        'circle-color': 'blue'
+        'circle-color': '#008080'
       }
   });
 
@@ -179,12 +179,12 @@ const getIsos = function() {
     // After the last frame rendered before the map enters an "idle" state.
     map.on('idle', () => {
         // If these two layers were not added to the map, abort
-        if (!map.getLayer('Food/Drink') || !map.getLayer('Museums')|| !map.getLayer('Wedding-related')|| !map.getLayer('Parks')) {
+        if (!map.getLayer('Food/Drink') || !map.getLayer('Museums')|| !map.getLayer('Wedding-related')|| !map.getLayer('Parks')|| !map.getLayer('Transit')) {
             return;
         }
 
         // Enumerate ids of the layers.
-        const toggleableLayerIds = ['Food/Drink', 'Museums', 'Wedding-related', 'Parks'];
+        const toggleableLayerIds = ['Food/Drink', 'Museums', 'Wedding-related', 'Parks', 'Transit'];
       });
 
  
