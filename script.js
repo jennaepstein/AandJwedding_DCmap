@@ -88,7 +88,7 @@ const getIsos = function() {
           'filter': ['==', 'category', 'Food/Drink'],
           'source': {
             type: 'geojson',
-            data: 'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/DC_spots_old.geojson'
+            data: 'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/DC_POI.geojson'
           },
           'layout': {
           // Make the layer visible by default.
@@ -106,7 +106,7 @@ const getIsos = function() {
           'filter': ['==', 'category', 'Museum'],
           'source': {
             type: 'geojson',
-            data: 'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/DC_spots_old.geojson'
+            data: 'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/DC_POI.geojson'
           },
           'layout': {
           // Make the layer visible by default.
@@ -125,7 +125,7 @@ const getIsos = function() {
         'filter': ['==', 'category', 'Wedding-related'],
         'source': {
           type: 'geojson',
-          data: 'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/DC_spots_old.geojson'
+          data: 'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/DC_POI.geojson'
         },
         'layout': {
         // Make the layer visible by default.
@@ -133,7 +133,7 @@ const getIsos = function() {
         },
         'paint': {
           'circle-radius': 8,
-          'circle-color': 'green'
+          'circle-color': '#A73425'
         }
     });
 
@@ -144,7 +144,7 @@ const getIsos = function() {
       'filter': ['==', 'category', 'Park'],
       'source': {
         type: 'geojson',
-        data: 'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/DC_spots_old.geojson'
+        data: 'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/DC_POI.geojson'
       },
       'layout': {
       // Make the layer visible by default.
@@ -152,7 +152,7 @@ const getIsos = function() {
       },
       'paint': {
         'circle-radius': 8,
-        'circle-color': '#008080'
+        'circle-color': '#528E8D'
       }
   });
 
@@ -164,7 +164,7 @@ const getIsos = function() {
       'filter': ['==', 'category', 'Transit'],
       'source': {
         type: 'geojson',
-        data: 'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/DC_spots_old.geojson'
+        data: 'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/DC_POI.geojson'
       },
       'layout': {
       // Make the layer visible by default.
@@ -172,7 +172,7 @@ const getIsos = function() {
       },
       'paint': {
         'circle-radius': 8,
-        'circle-color': 'purple'
+        'circle-color': '#585858'
       }
   });
 
