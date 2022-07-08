@@ -88,7 +88,7 @@ const getIsos = function() {
           'filter': ['==', 'category', 'Food/Drink'],
           'source': {
             type: 'geojson',
-            data: 'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/DC_spots.geojson'
+            data: 'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/DC_POI.geojson'
           },
           'layout': {
           // Make the layer visible by default.
@@ -106,7 +106,7 @@ const getIsos = function() {
           'filter': ['==', 'category', 'Museum'],
           'source': {
             type: 'geojson',
-            data: 'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/DC_spots.geojson'
+            data: 'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/DC_POI.geojson'
           },
           'layout': {
           // Make the layer visible by default.
