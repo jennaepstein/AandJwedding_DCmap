@@ -1,5 +1,5 @@
 body { margin: 0; padding: 0; font-family: 'Open Sans',sans-serif;
-  font-weight: 400}
+  font-weight: 400,;overflow: hidden}
 
 #map { position: absolute; top: 0; bottom: 0; width: 100%; }
 
@@ -7,7 +7,7 @@ body { margin: 0; padding: 0; font-family: 'Open Sans',sans-serif;
 .legend {
 background-color: #fff;
 border-radius: 3px;
-bottom: 30px;
+bottom: 40px;
 box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 font: 16px/20px 'Open Sans', sans-serif;
 padding: 10px;
@@ -52,7 +52,6 @@ p {
   position: absolute;
   width: 25%;
   height: 100%;
-  /*margin: 10px;*/
   padding: 10px 20px;
   opacity: 95%;
   overflow-y: auto;
@@ -60,9 +59,6 @@ p {
   border-right: 1px solid rgba(0, 0, 0, 0.25);
 }
 
-.fl {
-    float: center!important;
-}
 .absolute {
     position: center!important;
 }
@@ -74,7 +70,7 @@ p {
   flex-shrink: 0;
   cursor: pointer;
   color: #757d82;
-  font-size: 12px;
+  font-size: 14px;
   padding: 5px 18px;
   border-radius: 15px;
   background-color: transparent;
@@ -82,7 +78,7 @@ p {
 }
 
   .toggle-container {
-    max-width: 100%;
+    max-width: 95%;
 
 }
 input:checked+.toggle {
@@ -94,8 +90,4 @@ input:checked+.toggle {
     display: inline-flex;
     text-align: center;
     border-radius: 18px;
-}
-
-*, ::after, ::before, :after, :before {
-    box-sizing: inherit;
 }
