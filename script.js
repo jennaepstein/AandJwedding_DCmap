@@ -118,15 +118,73 @@ const getIsos = function() {
           }
       });
 
+      // Add data layer for wedding-related
+      map.addLayer({
+        'id': 'Wedding-related',
+        'type': 'circle',
+        'filter': ['==', 'category', 'Wedding-related'],
+        'source': {
+          type: 'geojson',
+          data: 'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/DC_POI.geojson'
+        },
+        'layout': {
+        // Make the layer visible by default.
+          'visibility': 'visible'
+        },
+        'paint': {
+          'circle-radius': 8,
+          'circle-color': 'green'
+        }
+    });
+
+    // Add data layer for parks
+    map.addLayer({
+      'id': 'Parks',
+      'type': 'circle',
+      'filter': ['==', 'category', 'Park'],
+      'source': {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/DC_POI.geojson'
+      },
+      'layout': {
+      // Make the layer visible by default.
+        'visibility': 'visible'
+      },
+      'paint': {
+        'circle-radius': 8,
+        'circle-color': 'blue'
+      }
+  });
+
+  
+    // Add data layer for transit
+    map.addLayer({
+      'id': 'Transit',
+      'type': 'circle',
+      'filter': ['==', 'category', 'Transit'],
+      'source': {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/DC_POI.geojson'
+      },
+      'layout': {
+      // Make the layer visible by default.
+        'visibility': 'visible'
+      },
+      'paint': {
+        'circle-radius': 8,
+        'circle-color': 'purple'
+      }
+  });
+
     // After the last frame rendered before the map enters an "idle" state.
     map.on('idle', () => {
         // If these two layers were not added to the map, abort
-        if (!map.getLayer('Food/Drink') || !map.getLayer('Museums')) {
+        if (!map.getLayer('Food/Drink') || !map.getLayer('Museums')|| !map.getLayer('Wedding-related')|| !map.getLayer('Parks')) {
             return;
         }
 
         // Enumerate ids of the layers.
-        const toggleableLayerIds = ['Food/Drink', 'Museums'];
+        const toggleableLayerIds = ['Food/Drink', 'Museums', 'Wedding-related', 'Parks'];
       });
 
  
