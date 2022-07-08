@@ -133,7 +133,7 @@ const getIsos = function() {
         },
         'paint': {
           'circle-radius': 8,
-          'circle-color': '#A73425'
+          'circle-color': '#D70040'
         }
     });
 
@@ -219,6 +219,57 @@ const getIsos = function() {
   });
 
   map.on('mouseleave', 'Museums', () => {
+    map.getCanvas().style.cursor = '';
+  });
+
+  // Popups for Parks
+  map.on('click', 'Parks', (e) => {
+    new mapboxgl.Popup()
+      .setMaxWidth("400px")
+      .setLngLat(e.lngLat)
+      .setHTML(`<strong>${e.features[0].properties.title}</strong><br>${e.features[0].properties.address}<br><em>${e.features[0].properties.description}</em>`)
+      .addTo(map);
+  });
+
+  map.on('mouseenter', 'Parks', () => {
+    map.getCanvas().style.cursor = 'pointer';
+  });
+
+  map.on('mouseleave', 'Parks', () => {
+    map.getCanvas().style.cursor = '';
+  });
+
+  // Popups for Transit
+  map.on('click', 'Transit', (e) => {
+    new mapboxgl.Popup()
+      .setMaxWidth("400px")
+      .setLngLat(e.lngLat)
+      .setHTML(`<strong>${e.features[0].properties.title}</strong><br>${e.features[0].properties.address}<br><em>${e.features[0].properties.description}</em>`)
+      .addTo(map);
+  });
+
+  map.on('mouseenter', 'Transit', () => {
+    map.getCanvas().style.cursor = 'pointer';
+  });
+
+  map.on('mouseleave', 'Transit', () => {
+    map.getCanvas().style.cursor = '';
+  });
+
+  // Popups for Wedding-related
+  map.on('click', 'Wedding-related', (e) => {
+    new mapboxgl.Popup()
+      .setMaxWidth("400px")
+      .setLngLat(e.lngLat)
+      .setHTML(`<strong>${e.features[0].properties.title}</strong><br>${e.features[0].properties.address}<br><em>${e.features[0].properties.description}</em>`)
+      .addTo(map);
+  });
+
+  map.on('mouseenter', 'Wedding-related', () => {
+    map.getCanvas().style.cursor = 'pointer';
+  });
+
+  map.on('mouseleave', 'Wedding-related', () => {
     map.getCanvas().style.cursor = '';
   });
 
