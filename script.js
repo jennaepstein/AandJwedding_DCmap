@@ -30,44 +30,93 @@ map.addControl(new mapboxgl.NavigationControl());
 
 // Wait until the map has finished loading.
 
-// Add a new layer to visualize the hexbins for CONGESTION (waze jams)
-    map.on('load', () => {
-        // Add data layer for food and drink
-        map.addLayer({
-            'id': 'Food/Drink',
-            'type': 'circle',
-            'filter': ['==', 'category', 'Food/Drink'],
-            'source': {
-              type: 'geojson',
-              data: 'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/DC_spots.geojson'
-            },
-            'layout': {
-                // Make the layer visible by default.
-                'visibility': 'visible'
-            },
-            'paint': {
-                'circle-radius': 8,
-                'circle-color': '#843c47'
-            }
-        });
-        // Add data layer for museums
-        map.addLayer({
-            'id': 'Museums',
-            'type': 'circle',
-            'filter': ['==', 'category', 'Museum'],
-            'source': {
-              type: 'geojson',
-              data: 'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/DC_spots.geojson'
-            },
-            'layout': {
-                // Make the layer visible by default.
-                'visibility': 'visible'
-            },
-            'paint': {
-                'circle-radius': 8,
-                'circle-color': '#DC872C'
-            }
-        });
+
+// ADD ISOCHRONES STUFF
+const isoAppData = {
+  params: {
+    urlBase: "https://api.mapbox.com/isochrone/v1/mapbox/",
+    profile: "walking/",
+    minutes: 10
+  },
+  origins: {
+    a: [-77.03422758, 38.9067983]
+  },
+  isos: {
+    a: {}
+  }
+};
+
+// Grab the elements from the DOM to assign interactivity
+const params = document.getElementById("params");
+const msg = document.getElementById("msg");
+
+// Get a single isochrone for a given position and return the GeoJSON
+const getIso = function(position) {
+  // Build the URL for the isochrone API
+  const isoUrl = isoAppData.params.urlBase + isoAppData.params.profile + position.join(",") + "?contours_minutes=" +
+  isoAppData.params.minutes + "&polygons=true&access_token=" + mapboxgl.accessToken;
+
+  // Return the GeoJSON
+  return fetch(isoUrl).then(res => res.json());
+};
+
+// Update the map sources so the isochrones draw on the map
+const setIsos = function(isos) {
+  // Save the isochrone data into the app object
+  isoAppData.isos.a = isos[0];
+
+  // Update the map
+  map.getSource("isoA").setData(isoAppData.isos.a);
+};
+
+// Get the isochrone data from the API, then update the map
+const getIsos = function() {
+  const isochroneA = getIso(isoAppData.origins.a);
+
+  // Once the isochrones are received, update the map
+  Promise.all([isochroneA]).then(values => {
+    setIsos(values);
+  });
+};
+
+// ADD DATA LAYERS
+  map.on('load', () => {
+      // Add data layer for food and drink
+      map.addLayer({
+          'id': 'Food/Drink',
+          'type': 'circle',
+          'filter': ['==', 'category', 'Food/Drink'],
+          'source': {
+            type: 'geojson',
+            data: 'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/DC_spots.geojson'
+          },
+          'layout': {
+          // Make the layer visible by default.
+            'visibility': 'visible'
+          },
+          'paint': {
+            'circle-radius': 8,
+            'circle-color': '#843c47'
+          }
+      });
+      // Add data layer for museums
+      map.addLayer({
+          'id': 'Museums',
+          'type': 'circle',
+          'filter': ['==', 'category', 'Museum'],
+          'source': {
+            type: 'geojson',
+            data: 'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/DC_spots.geojson'
+          },
+          'layout': {
+          // Make the layer visible by default.
+            'visibility': 'visible'
+          },
+          'paint': {
+            'circle-radius': 8,
+            'circle-color': '#DC872C'
+          }
+      });
 
     // After the last frame rendered before the map enters an "idle" state.
     map.on('idle', () => {
@@ -81,10 +130,10 @@ map.addControl(new mapboxgl.NavigationControl());
       });
 
  
-
-// Popups for Food/Drink
+  // Popups for Food/Drink
   map.on('click', 'Food/Drink', (e) => {
     new mapboxgl.Popup()
+      .setMaxWidth("400px")
       .setLngLat(e.lngLat)
       .setHTML(`<strong>${e.features[0].properties.title}</strong><br>${e.features[0].properties.address}<br><em>${e.features[0].properties.description}</em>`)
       .addTo(map);
@@ -98,9 +147,10 @@ map.addControl(new mapboxgl.NavigationControl());
     map.getCanvas().style.cursor = '';
   });
 
-// Popups for Museums
+  // Popups for Museums
   map.on('click', 'Museums', (e) => {
     new mapboxgl.Popup()
+      .setMaxWidth("400px")
       .setLngLat(e.lngLat)
       .setHTML(`<strong>${e.features[0].properties.title}</strong><br>${e.features[0].properties.address}<br><em>${e.features[0].properties.description}</em>`)
       .addTo(map);
@@ -114,4 +164,62 @@ map.addControl(new mapboxgl.NavigationControl());
     map.getCanvas().style.cursor = '';
   });
 
-    });
+
+  // Add sources and layers for the isochrones
+  map.addSource("isoA", {
+    type: "geojson",
+    data: {
+      type: "FeatureCollection",
+      features: [
+      ]
+    }
+  });
+
+  map.addLayer({
+    "id": "isoLayerA",
+    "type": "fill",
+    "source": "isoA",
+    "layout": {},
+    "paint": {
+      "fill-color": "gold",
+      "fill-opacity": 0.3
+    }
+  }, "poi-label");
+
+  // Once the map is all set up, load some isochrones
+  getIsos();
+});
+
+// Set up the origin markers and their interactivity
+const originA = new mapboxgl.Marker({
+  draggable: true,
+  color: "#d4af37",
+  scale: 0.75
+  
+})
+  .setLngLat(isoAppData.origins.a)
+  .addTo(map);
+
+// When the point is moved, refresh the isochrones
+function onDragEndA() {
+  const lngLat = originA.getLngLat();
+  isoAppData.origins.a = [lngLat.lng, lngLat.lat];
+  getIsos();
+}
+
+originA.on("dragend", onDragEndA);
+
+params.addEventListener("change", e => {
+  if (e.target.name === "profile") {
+    isoAppData.params.profile = e.target.value;
+    getIsos();
+  } else if (e.target.name === "duration") {
+    isoAppData.params.minutes = e.target.value;
+    getIsos();
+  } else if (e.target.name === "category") {
+    isoAppData.params.category = e.target.value;
+    getIsos();
+  }
+});
+
+    

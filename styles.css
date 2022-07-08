@@ -1,4 +1,5 @@
-body { margin: 0; padding: 0; }
+body { margin: 0; padding: 0; font-family: 'Open Sans',sans-serif;
+  font-weight: 400}
 
 #map { position: absolute; top: 0; bottom: 0; width: 100%; }
 
@@ -8,7 +9,7 @@ background-color: #fff;
 border-radius: 3px;
 bottom: 30px;
 box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+font: 16px/20px 'Open Sans', sans-serif;
 padding: 10px;
 position: absolute;
 right: 10px;
@@ -16,7 +17,7 @@ width: 10%;
 }
 
 .legend div span {
-border-radius: 50%;
+border-radius: 150%;
 display: inline-block;
 height: 15px;
 margin-right: 5px;
@@ -24,23 +25,28 @@ width: 15px;
 }
 
 h1 {
-  font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-family: 'Open Sans',sans-serif;
   font-size: 30px;
   line-height: 30px;
 }
 
 h2 {
-  font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  font-size: 18px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
   line-height: 20px;
   margin-bottom: 10px;
 }
 
 
 p {
-  font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
+.mapboxgl-popup-content {
+  font-size: 12px;
+  line-height: 20px;
+  font-family: 'Open Sans', sans-serif;
+}
 
 #console {
   position: absolute;
@@ -52,4 +58,44 @@ p {
   overflow-y: auto;
   background-color: white;
   border-right: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.fl {
+    float: center!important;
+}
+.absolute {
+    position: center!important;
+}
+.round {
+    border-radius: 15px!important;
+
+}
+.toggle {
+  flex-shrink: 0;
+  cursor: pointer;
+  color: #757d82;
+  font-size: 12px;
+  padding: 5px 18px;
+  border-radius: 15px;
+  background-color: transparent;
+  transition: color .125s,background-color .125s;
+}
+
+  .toggle-container {
+    max-width: 100%;
+
+}
+input:checked+.toggle {
+    background: #757d82;
+    color: #fff;
+
+}
+.toggle-group {
+    display: inline-flex;
+    text-align: center;
+    border-radius: 18px;
+}
+
+*, ::after, ::before, :after, :before {
+    box-sizing: inherit;
 }

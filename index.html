@@ -18,6 +18,7 @@ crossorigin=""/>
 integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
 crossorigin=""></script>
 
+
 </head>
 <body>
 
@@ -25,12 +26,38 @@ crossorigin=""></script>
 <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
 <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
 
+
 <div id="map"></div>
 
 <div id="console">
     <h1>A&J</h1>
     <br>
-    <p>Check out our favorite spots to eat and explore in DC! Click on the points on the map for more information.</p><hr>
+    <p>Check out our favorite spots to eat and explore in Washington, DC. Click on the points on the map for more information.</p><p>The options below allow you to explore what is within a given walking distance of the gold marker. Click and drag the gold marker around, and the map will update accordingly!</p>
+
+
+
+    <div class='absolute fl round'>
+      <form id='params'>
+       
+        <h4>Choose a maximum walking duration:</h4>
+        <div class=' toggle-group'>
+          <label class='toggle-container'>
+            <input name='duration' type='radio' value='10' checked>
+            <div class='toggle toggle--active-null toggle--null'>10 min</div>
+          </label>
+          <label class='toggle-container'>
+            <input name='duration' type='radio' value='20'>
+            <div class='toggle toggle--active-null toggle--null'>20 min</div>
+          </label>
+          <label class='toggle-container'>
+            <input name='duration' type='radio' value='30'>
+            <div class='toggle toggle--active-null toggle--null'>30 min</div>
+          </label>
+        </div>
+      </form>
+    </div>
+
+
   </div>
 
 <div id="points-legend" class="legend">
