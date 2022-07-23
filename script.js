@@ -79,12 +79,28 @@ const getIsos = function() {
   });
 };
 
+
+
+
+
+
 // ADD DATA LAYERS
   map.on('load', () => {
+
+    map.loadImage(
+      'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/images/restaurant.png',
+      (error, image) => {
+      if (error) throw error;
+       
+      // Add the image to the map style.
+      map.addImage('restaurant', image);
+      });
+
+
       // Add data layer for food and drink
       map.addLayer({
           'id': 'Food/Drink',
-          'type': 'circle',
+          'type': 'symbol',
           'filter': ['==', 'category', 'Food/Drink'],
           'source': {
             type: 'geojson',
@@ -92,11 +108,10 @@ const getIsos = function() {
           },
           'layout': {
           // Make the layer visible by default.
-            'visibility': 'visible'
-          },
-          'paint': {
-            'circle-radius': 8,
-            'circle-color': '#843c47'
+            'visibility': 'visible',
+            'icon-image': 'restaurant', // reference the image
+            'icon-size': 0.25
+          
           }
       });
       // Add data layer for museums
@@ -176,6 +191,7 @@ const getIsos = function() {
       }
   });
 
+
     // After the last frame rendered before the map enters an "idle" state.
     map.on('idle', () => {
         // If these two layers were not added to the map, abort
@@ -187,6 +203,8 @@ const getIsos = function() {
         const toggleableLayerIds = ['Food/Drink', 'Museums', 'Wedding-related', 'Parks', 'Transit'];
       });
 
+
+      
  
   // Popups for Food/Drink
   map.on('click', 'Food/Drink', (e) => {
