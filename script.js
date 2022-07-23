@@ -110,14 +110,26 @@ const getIsos = function() {
           // Make the layer visible by default.
             'visibility': 'visible',
             'icon-image': 'restaurant', // reference the image
-            'icon-size': 0.25
+            'icon-size': 1.5
           
           }
       });
       // Add data layer for museums
+
+
+      map.loadImage(
+        'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/images/museum.png',
+        (error, image) => {
+        if (error) throw error;
+         
+        // Add the image to the map style.
+        map.addImage('museum', image, { 'sdf': true });
+        });
+
+        
       map.addLayer({
           'id': 'Museums',
-          'type': 'circle',
+          'type': 'symbol',
           'filter': ['==', 'category', 'Museum'],
           'source': {
             type: 'geojson',
@@ -125,12 +137,14 @@ const getIsos = function() {
           },
           'layout': {
           // Make the layer visible by default.
-            'visibility': 'visible'
+            'visibility': 'visible',
+            'icon-image': 'museum', // reference the image
+            'icon-size': 1.15
           },
           'paint': {
-            'circle-radius': 8,
-            'circle-color': '#DC872C'
+            'icon-color': '#D70040'
           }
+          
       });
 
       // Add data layer for wedding-related
