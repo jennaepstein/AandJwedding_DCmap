@@ -87,20 +87,20 @@ const getIsos = function() {
 // ADD DATA LAYERS
   map.on('load', () => {
 
-    map.loadImage(
-      'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/images/food_drink_icon.png',
-      (error, image) => {
-      if (error) throw error;
+    //map.loadImage(
+    //  'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/images/food_drink_icon.png',
+    //  (error, image) => {
+    //  if (error) throw error;
        
       // Add the image to the map style.
-      map.addImage('food_drink_icon', image);
-      });
+    //  map.addImage('food_drink_icon', image);
+    //  });
 
 
       // Add data layer for food and drink
       map.addLayer({
           'id': 'Food/Drink',
-          'type': 'symbol',
+          'type': 'circle', //symbol
           'filter': ['==', 'category', 'Food/Drink'],
           'source': {
             type: 'geojson',
@@ -108,28 +108,32 @@ const getIsos = function() {
           },
           'layout': {
           // Make the layer visible by default.
-            'visibility': 'visible',
-            'icon-image': 'food_drink_icon', // reference the image
-            'icon-size': 1.5
+            'visibility': 'visible'
+            //'icon-image': 'food_drink_icon', // reference the image
+            //'icon-size': 0.01
           
+          },
+          'paint': {
+            'circle-color': '#843c47',
+            'circle-radius': 7
           }
       });
       // Add data layer for museums
 
 
-      map.loadImage(
-        'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/images/museum.png',
-        (error, image) => {
-        if (error) throw error;
+      //map.loadImage(
+      //  'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/images/museum.png',
+      //  (error, image) => {
+      //  if (error) throw error;
          
         // Add the image to the map style.
-        map.addImage('museum', image, { 'sdf': true });
-        });
+      //  map.addImage('museum', image);
+      //  });
 
         
       map.addLayer({
           'id': 'Museums',
-          'type': 'symbol',
+          'type': 'circle',
           'filter': ['==', 'category', 'Museum'],
           'source': {
             type: 'geojson',
@@ -137,12 +141,14 @@ const getIsos = function() {
           },
           'layout': {
           // Make the layer visible by default.
-            'visibility': 'visible',
-            'icon-image': 'museum', // reference the image
-            'icon-size': 1.15
+            'visibility': 'visible'
+            //'icon-image': 'museum', // reference the image
+            //'icon-size': 1.15
           },
           'paint': {
-            'icon-color': '#D70040'
+            'circle-color': '#DC872C',
+            'circle-opacity': 0.9,
+            'circle-radius': 7
           }
           
       });
@@ -161,7 +167,8 @@ const getIsos = function() {
           'visibility': 'visible'
         },
         'paint': {
-          'circle-radius': 8,
+          'circle-radius': 7,
+          'circle-opacity': 0.9,
           'circle-color': '#D70040'
         }
     });
@@ -180,7 +187,8 @@ const getIsos = function() {
         'visibility': 'visible'
       },
       'paint': {
-        'circle-radius': 8,
+        'circle-radius': 7,
+        'circle-opacity': 0.9,
         'circle-color': '#528E8D'
       }
   });
@@ -200,8 +208,9 @@ const getIsos = function() {
         'visibility': 'visible'
       },
       'paint': {
-        'circle-radius': 8,
-        'circle-color': '#585858'
+        'circle-radius': 7,
+        'circle-color': '#585858',
+        'circle-opacity': 0.9
       }
   });
 
