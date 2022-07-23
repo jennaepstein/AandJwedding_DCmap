@@ -88,12 +88,12 @@ const getIsos = function() {
   map.on('load', () => {
 
     map.loadImage(
-      'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/images/restaurant.png',
+      'https://raw.githubusercontent.com/jennaepstein/AandJwedding_DCmap/main/images/food_drink_icon.png',
       (error, image) => {
       if (error) throw error;
        
       // Add the image to the map style.
-      map.addImage('restaurant', image);
+      map.addImage('food_drink_icon', image);
       });
 
 
@@ -109,7 +109,7 @@ const getIsos = function() {
           'layout': {
           // Make the layer visible by default.
             'visibility': 'visible',
-            'icon-image': 'restaurant', // reference the image
+            'icon-image': 'food_drink_icon', // reference the image
             'icon-size': 1.5
           
           }
